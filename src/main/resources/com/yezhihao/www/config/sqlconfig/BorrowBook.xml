@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yezhihao.www.po.BorrowBook">
+<!--配置对应结果集  -->
+  <resultMap type="com.yezhihao.www.po.BorrowBookPo" id="BorrowBook">
+    <id column="book_id" jdbcType="INTEGER" property="book_id"/>
+    <id column="allow_borrow" jdbcType="INTEGER" property="allow_borrow"/>
+    <id column="borrow_bookid" jdbcType="INTEGER" property="borrow_bookid"/>
+    <result column="book_name" jdbcType="VARCHAR" property="book_name"/>
+    <result column="user_name" jdbcType="VARCHAR" property="user_name"/>
+    <result column="borrow_date" jdbcType="VARCHAR" property="borrow_date"/>
+    <result column="return_date" jdbcType="VARCHAR" property="return_date"/>
+  </resultMap>
+	 <!--增加j申请借阅书籍  -->
+     <insert id="addBorrowBook" parameterType="BorrowBookPo" useGeneratedKeys="true" keyProperty="borrow_bookid">
+	 	insert into book_borrow(book_id, allow_borrow,book_name,user_name,borrow_date,return_date) values(#{book_id},#{allow_borrow},#{book_name},#{user_name},#{borrow_date},#{return_date})
+	 </insert>
+	 
+	 <!-- 修改是否同意借阅的状态 -->
+	 <update id="allowApply" parameterType="BorrowBookPo" >
+	 	update book_borrow set allow_borrow=#{allow_borrow},borrow_date=#{borrow_date},return_date=#{return_date} where borrow_bookid=#{borrow_bookid}
+	 </update>
+	 
+ 	 <!-- 还书 -->
+	 <update id="returnbook" parameterType="BorrowBookPo" >
+	 	update book_borrow set allow_borrow=#{allow_borrow} where borrow_bookid=#{borrow_bookid}
+	 </update>
+	 
+ 	 <!-- 删除借书记录 -->
+	 <update id="deleteBorrowBook" parameterType="BorrowBookPo" >
+	 	delete from book_borrow where book_id=#{book_id}  and allow_borrow!=#{allow_borrow}
+	 </update>
+	 
+	  <!-- 删除不同意借出的记录 -->
+	 <update id="deleteFailApply" parameterType="BorrowBookPo" >
+	 	delete from book_borrow where book_id=#{book_id} and user_name=#{user_name} and allow_borrow=#{allow_borrow}
+	 </update>
+	 
+	 <!--通过审核状态来获取申请借阅记录 -->
+	 <select id="getApplyBook" resultType="BorrowBookPo" parameterType="int">
+	 	select * from book_borrow where allow_borrow=#{allow_borrow} 
+	 </select>
+	 
+	 <!--通过借阅者名字来取得借阅申请记录 -->
+	 <select id="getBorrowBookByUsername" resultType="BorrowBookPo" parameterType="String">
+	 	select * from book_borrow where user_name=#{user_name} 
+	 </select>
+	 
+	 <!--通过借阅者名字和状态来取得借阅申请记录||得到已失效记录 -->
+	 <select id="getBorrowBookByUsername1" resultType="BorrowBookPo" parameterType="BorrowBookPo">
+	 	select * from book_borrow where user_name=#{user_name} and allow_borrow=#{allow_borrow} 
+	 </select>
+	 
+	<!--
+	  <select id="select_oneuser" resultMap="User">
+	    select * from user where id=#{id} 
+	 </select>
+	 
+	 <delete id="deleteUser" parameterType="int">
+	 	delete from users where id=#{id}
+	 </delete>
+	 
+	 <update id="updateUser" parameterType="User">
+	 	update users set name=#{name},age=#{age} where id=#{id}
+	 </update>
+	 
+	 <select id="getUser" parameterType="int" resultType="User">
+	 	select * from users where id=#{id}
+	 </select>
+	
+	 <select id="selectAllUsers" resultType="User">
+	 	select * from users
+	 </select>
+  -->
+</mapper>

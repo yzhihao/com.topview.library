@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yezhihao.www.dao.Book">
+
+<!--配置对应结果集  -->
+  <resultMap type="com.yezhihao.www.po.BookPo" id="Book">
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="book_name" jdbcType="VARCHAR" property="book_name"/>
+    <result column="book_writer" jdbcType="VARCHAR" property="book_writer"/>
+    <result column="book_amg" jdbcType="VARCHAR" property="book_amg"/>
+    <result column="book_samem" jdbcType="VARCHAR" property="book_samem"/>
+    <result column="book_margin" jdbcType="VARCHAR" property="book_margin"/>
+  </resultMap>
+	 <!--增加书籍  -->
+     <insert id="addBook" parameterType="BookPo" useGeneratedKeys="true" keyProperty="id">
+	 	insert into book(book_name, book_writer,book_amg,book_samem,book_margin) values(#{book_name},#{book_writer},#{book_amg},#{book_samem},#{book_margin})
+	 </insert>
+	 
+	 <!-- 修改书的仓库余量 -->
+	 <update id="changeMargin" parameterType="BookPo" >
+	 	update book set book_margin=#{book_margin} where id=#{id}
+	 </update>
+	 
+	 <!--删除图书 -->
+	 <update id="deleteFailApply" parameterType="int">
+	 	delete from book  where id=#{id}
+	 </update>
+	 
+	 <!-- 删除图书（有的书还没有还） -->
+	 <update id="deleteFailApply1" parameterType="BookPo" >
+	 	update book set book_samem=#{book_samem},book_margin=#{book_margin} where id=#{id}
+	 </update>
+	 
+	 <!-- 更新图书 -->
+	 <update id="updateBookDao" parameterType="BookPo" >
+	 	update  book  set book_name=#{book_name}, book_amg=#{book_amg},book_writer=#{book_writer},book_samem=#{book_samem},book_margin=#{book_margin}  where id=#{id}
+	 </update>
+	 
+	 <!-- 获取所有的书籍 -->
+	 <select id="getBook" resultType="BookPo">
+	 	select * from book
+	 </select>
+	 
+	 <!-- 查找书籍，通过作者或者书名 -->
+	 <select id="getBookByselect" resultType="BookPo" parameterType="BookPo">
+	 	select * from book where book_name=#{book_name} or book_writer=#{book_writer}
+	 </select>
+	 
+	 <!--通过id来获取的书籍 -->
+	 <select id="getBookById" resultType="BookPo">
+	 	select * from book where id=#{id}
+	 </select>
+	 <!-- 这里是分页查询 -->
+	 <select id="queryBookByPage" parameterType="Page"  resultMap="Book">
+    select * from book order by id
+  </select>
+  
+  
+   <!-- <where>
+    	<if test="message.command != null and !&quot;&quot;.equals(message.command.trim())">
+	    	and COMMAND=#{message.command}
+	    </if>
+	    <if test="message.description != null and !&quot;&quot;.equals(message.description.trim())">
+	    	and DESCRIPTION like '%' #{message.description} '%'
+	    </if>
+    </where> -->
+	<!-- <select id="queryMessageList" parameterType="java.util.Map" resultMap="MessageResult">
+    	select <include refid="columns"/> from MESSAGE
+    <where>
+    	<if test="message.command != null and !&quot;&quot;.equals(message.command.trim())">
+	    	and COMMAND=#{message.command}
+	    </if>
+	    <if test="message.description != null and !&quot;&quot;.equals(message.description.trim())">
+	    	and DESCRIPTION like '%' #{message.description} '%'
+	    </if>
+    </where>
+    	order by ID limit #{page.dbIndex},#{page.dbNumber}
+  	</select> -->
+</mapper>

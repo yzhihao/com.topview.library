@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yezhihao.www.po.User">
+<!--配置对应结果集  -->
+  <resultMap type="com.yezhihao.www.po.UserPo" id="User">
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="usre_name" jdbcType="VARCHAR" property="usre_name"/>
+    <result column="password" jdbcType="VARCHAR" property="password"/>
+    <result column="type" jdbcType="VARCHAR" property="type"/>
+    <result column="user_amg" jdbcType="VARCHAR" property="user_amg"/>
+    <result column="possword_request" jdbcType="VARCHAR" property="possword_request"/>
+    <result column="possword_right" jdbcType="VARCHAR" property="possword_right"/>
+  </resultMap>
+  
+	 <!-- 增加用户 -->
+     <insert id="addUser" parameterType="UserPo" useGeneratedKeys="true" keyProperty="id">
+	 	insert into user(usre_name, password,type,user_amg,possword_request,possword_right) values(#{usre_name},#{password},#{type},#{user_amg},#{possword_request},#{possword_right})
+	 </insert>
+	 
+	 <!-- 获取所有的用户 -->
+	 <select id="getUser" resultType="UserPo">
+	 	select * from user
+	 </select>
+	 
+	 <!-- 获取普通用户 -->
+	 <select id="getgeneralUser" resultType="UserPo" parameterType="String">
+	 	select * from user where type=#{type}
+	 </select>
+	 
+	 <!-- 通过用户名来获取用户 -->
+	 <select id="getuserbyusername" resultType="UserPo" parameterType="String" >
+	 	select * from user where usre_name=#{usre_name}
+	 </select>
+	 
+	 <!-- 更新用户的信息 -->
+	 <update id="updateuserdao" parameterType="UserPo" >
+	 	update user set password=#{password} where usre_name=#{usre_name}
+	 </update>
+	 
+	  <!--
+	 <update id="updateUser" parameterType="UserPo" >
+	 	update user set username=#{username},age=#{age} where id=#{id}
+	 </update>
+	
+	  <select id="select_oneuser" resultMap="User">
+	    select * from user where id=#{id} 
+	 </select>
+	 
+	 <delete id="deleteUser" parameterType="int">
+	 	delete from users where id=#{id}
+	 </delete>
+	 
+	 <update id="updateUser" parameterType="User">
+	 	update users set name=#{name},age=#{age} where id=#{id}
+	 </update>
+	 
+	 <select id="getUser" parameterType="int" resultType="User">
+	 	select * from users where id=#{id}
+	 </select>
+	
+	 <select id="selectAllUsers" resultType="User">
+	 	select * from users
+	 </select>
+  -->
+</mapper>
