@@ -1,14 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
-    
     <title>My JSP 'index.jsp' starting page</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -19,16 +14,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
   </head>
-  
   <body>
-    当前在线用户人数:${userNumber }<br/>
-    <% 
-   ArrayList<com.yezhihao.www.po.Listener_UserPo>  userList =  (ArrayList<com.yezhihao.www.po.Listener_UserPo>)request.getServletContext().getAttribute("userList"); 
-   if(userList!=null){
-       for(int i = 0 ; i < userList.size() ; i++){
-    	   com.yezhihao.www.po.Listener_UserPo user = userList.get(i);
-   %>
-    IP:<%=user.getIpString() %>,FirstTime:<%=user.getFirstTimeString() %>,SessionId:<%=user.getSessionIdString() %> <br/>
-    <%}} %>
+    当前在线用户人数:${userNumber}<br/>
+    <c:if test="${userList!=null}">
+        <c:forEach items="${userList}" var="user">
+    	IP:${user.ipString },FirstTime:${user.firstTimeString },SessionId:${user.sessionIdString }<br/>
+	 	</c:forEach>
+	</c:if>
   </body>
 </html>

@@ -46,7 +46,7 @@
   <tr><td  align="right">书名</td><td><input type="text" name="book_name" id="book_name"/></td></tr>
   <tr><td  align="right">作者</td><td><input type="text" name="book_writer" id="book_writer" /></td></tr>
   <tr><td  align="right">书的数量</td><td><input type="text" name="book_samem" id="book_samem"/></td></tr>
-  <tr><td  align="right">上传图片</td><td><input type="file" name="book_amg" id="book_amg" /></td></tr>
+  <tr><td  align="right">上传图片</td><td><input type="file" name="file" id="book_amg" /></td></tr>
   <tr><td  align="right" ><input name="regForm" type="submit" value="提交"></td></tr>
   </table>
 </form>

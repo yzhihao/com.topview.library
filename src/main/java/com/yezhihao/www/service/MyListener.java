@@ -3,6 +3,7 @@ package com.yezhihao.www.service;
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
+
 @WebListener
 public class MyListener implements HttpSessionListener {
 	private static int allusernum;

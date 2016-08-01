@@ -2,11 +2,12 @@ package com.yezhihao.www.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
 
 import com.yezhihao.www.po.BookPo;
 import com.yezhihao.www.po.Page;
 
-
+@Repository
 public interface Book {
 	
 	/*这里是分页查询 */
@@ -34,7 +35,7 @@ public interface Book {
 	 public List<BookPo> getBookByselect(BookPo bookPo);
 	 
 	 /*通过id来获取的书籍*/
-	 public BookPo getBookById(BookPo bookPo);
+	 public BookPo getBookById(int id);
 	 
 	 
 

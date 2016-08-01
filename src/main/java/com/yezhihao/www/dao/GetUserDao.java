@@ -15,35 +15,36 @@ public class GetUserDao {
 	/*获取所有的用户*/
 	public ArrayList<UserPo> getUser() throws Exception{
 		List<UserPo>  userlist=new ArrayList<UserPo>();
-//		Connection con= DriveUtil.getcon(); 
-//		String sql="select * from user";
-//    	PreparedStatement stmt=con.prepareStatement(sql); 
-//    	ResultSet se=stmt.executeQuery();
-//	    while(se.next()){
-//	    	int id=se.getInt("id");
-//	    	String userName=se.getString("usre_name");
-//	    	String password=se.getString("password");
-//	    	String type=se.getString("type");
-//	    	UserPo user=new UserPo(id,userName,password,type);
-//	    	userlist.add(user);
-//	    }
-//	    DriveUtil.close(con, stmt);
+////		Connection con= DriveUtil.getcon(); 
+////		String sql="select * from user";
+////    	PreparedStatement stmt=con.prepareStatement(sql); 
+////    	ResultSet se=stmt.executeQuery();
+////	    while(se.next()){
+////	    	int id=se.getInt("id");
+////	    	String userName=se.getString("usre_name");
+////	    	String password=se.getString("password");
+////	    	String type=se.getString("type");
+////	    	UserPo user=new UserPo(id,userName,password,type);
+////	    	userlist.add(user);
+////	    }
+////	    DriveUtil.close(con, stmt);
 		
 		DBAccess dbAccess = new DBAccess();
 		SqlSession sqlSession = null;
 		try {
-			sqlSession = dbAccess.getSqlSession();
-			String statements="com.yezhihao.www.po.User.getUser";
+		sqlSession = dbAccess.getSqlSession();
+			String statements="com.yezhihao.www.dao.User.getUser";
 			userlist= sqlSession.selectList(statements);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			DBAccess.closeSqlSession(sqlSession);
 		}
 		return (ArrayList<UserPo>) userlist;
 	}
-	
+
+
+
 	public ArrayList<UserPo> getgeneralUser() throws Exception{
 		List<UserPo>  userlist=new ArrayList<UserPo>();
 //		Connection con= DriveUtil.getcon(); 

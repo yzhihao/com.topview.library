@@ -1,6 +1,7 @@
 <%@page import="com.yezhihao.www.view.RegisterUserServlet"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,23 +24,27 @@
   </script>
 </head>
 <body>
-	<%
+	<%-- <%
 	String answer=RegisterUserServlet.getMD5(request.getParameter("answer"));
 	System.out.print(answer);
-	if(answer.equals(request.getParameter("a1"))){%>
+	if(answer.equals(request.getParameter("a1"))){%> --%>
+	 <c:if test="${a1==ture}">
 	<h1>回答正确</h1>
-	<form action="servlet/ChangePosswordServlet" name="regForm" method="post" onsubmit="return judge()">
+	<form action="ChangePosswordServlet" name="regForm" method="post" onsubmit="return judge()">
   	<table  align="center" width="500" height="450">
   	<tr><td colspan="2" align="center"><img src ="http://src.house.sina.com.cn/imp/imp/deal/91/1e/d/edeb32ced44028a2c8c5715f910_p1_mk1.jpg"height="300"></td></tr>
   	<tr><td  align="center">新的密码：</td><td><input type="text" name="possword1" id="possword1"/></td>  
   	<tr><td  align="center">再输入一次：</td><td><input type="text" name="possword" id="possword" /></td> 
-  	<tr><td><input type="hidden"  name="username" value="<%=request.getParameter("username") %>"></td></tr> 
+  	<tr><td><input type="hidden"  name="username" value="${username}"></td></tr> 
   	<tr><td  align="right"><input name="regForm" type="submit" value="提交"></td></tr>
   	</table>
 	</form>
-	<% }else{%>
+	</c:if>
+	<%-- <% }else{%> --%>
+	<c:if test="${a1!=ture}">
 		<h1>回答错误</h1>
-	<% }%>
+	<%-- <% }%> --%>
+	</c:if>
 	<a href="Login.jsp">返回登录界面</a><br>
 </body>
 </html>

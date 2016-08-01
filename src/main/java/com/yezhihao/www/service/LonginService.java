@@ -2,19 +2,25 @@ package com.yezhihao.www.service;
 
 import java.util.ArrayList;
 
-import com.yezhihao.www.dao.GetUserDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.yezhihao.www.dao.User;
 import com.yezhihao.www.po.UserPo;
 import com.yezhihao.www.view.RegisterUserServlet;
 
 
-
-
+@Service("LonginService")
 public class LonginService {
-
+			
+	@Autowired
+	private User user;
+	
 	public boolean login(UserPo a_user) throws Exception{
-		GetUserDao userDao=new GetUserDao();
+		//GetUserDao userDao=new GetUserDao();
 		ArrayList<UserPo> Userlist=new ArrayList<UserPo>();
-		Userlist=userDao.getUser();
+		//Userlist=userDao.getUser();
+		Userlist=(ArrayList<UserPo>) user.getUser();
 		UserPo user=new UserPo();
 		for(UserPo user1:Userlist){
 			user=user1;

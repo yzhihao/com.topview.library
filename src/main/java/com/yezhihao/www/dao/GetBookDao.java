@@ -150,7 +150,7 @@ public class GetBookDao {
 		BookPo Book=null;
 		try {
 			sqlSession = dbAccess.getSqlSession();
-			String statements="com.yezhihao.www.po.Book.getBookById";
+			String statements="com.yezhihao.www.dao.Book.getBookById";
 			Book= sqlSession.selectOne(statements, id);
 		} catch (Exception e) {
 			e.printStackTrace();

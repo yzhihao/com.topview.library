@@ -10,12 +10,12 @@
 
 <table align="center" width="500" height="400">
 <tbody>
-<tr><td colspan="4" align="center">欢迎您，<%=session.getAttribute("username")%></td><td ><a href="Login.jsp">退出登录</a></td></tr>
+<tr><td colspan="4" align="center">欢迎您，<%=session.getAttribute("username")%></td><td ><a href="${ pageContext.request.contextPath }/Login.jsp">退出登录</a></td></tr>
 <tr><td colspan="5"><img src ="http://game.funshion.com/cms/uploads/allimg/111118/3_111118144925_1.jpg"height="300"></td></tr>
-<tr height="50"><td><a href="ShowBook.jsp?curPage=1">查看所有书籍</a></td><td ><a href="ShowCollectBook.jsp">收藏夹</a></td>
-<td><a href="OneUserBorrowCondition.jsp?username=<%=(String)session.getAttribute("username")%>">借阅情况</a></td>
-<td><a href="OneOldBorrowCondition.jsp?username=<%=(String)session.getAttribute("username")%>">借阅历史</a></td>
-<td><a href="ApplyStates.jsp?username=<%=(String)session.getAttribute("username")%>">审核情况</a></td></tr>
+<tr height="50"><td><a href="ShowBook?curPage=1">查看所有书籍</a></td><td ><a href="ShowCollectBook">收藏夹</a></td>
+<td><a href="OneUserBorrowCondition">借阅情况</a></td>
+<td><a href="OneOldBorrowCondition">借阅历史</a></td>
+<td><a href="ApplyStates?username=<%=(String)session.getAttribute("username")%>">审核情况</a></td></tr>
 <tr><td colspan="5" align="center">我就是我，为自己代言，不一样的烟火</td></tr>
 </tbody>
 </table>

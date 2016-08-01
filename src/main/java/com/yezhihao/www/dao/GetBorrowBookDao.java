@@ -37,7 +37,6 @@ public class GetBorrowBookDao {
 			String statements="com.yezhihao.www.po.BorrowBook.getApplyBook";
 			borrowbooklist= sqlSession.selectList(statements,2);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			DBAccess.closeSqlSession(sqlSession);
@@ -79,7 +78,6 @@ public class GetBorrowBookDao {
 			String statements="com.yezhihao.www.po.BorrowBook.getApplyBook";
 			borrowbooklist= sqlSession.selectList(statements,1);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			DBAccess.closeSqlSession(sqlSession);

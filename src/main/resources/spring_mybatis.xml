@@ -14,6 +14,11 @@
      <!-- 注解说明 -->
 	<context:annotation-config/>
         
+        <context:component-scan base-package="com.yezhihao.www">
+		<!-- <context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" /> -->
+		</context:component-scan>
+	
        <!-- 1. 数据源 : DriverManagerDataSource -->
 	<bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
@@ -28,6 +33,16 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="datasource"/>
 		<property name="typeAliasesPackage" value="com.yezhihao.www.po"/>
+		<!-- mybatis的拦截器的配置 -->
+		 <property name="plugins">
+        <array>
+            <bean class="com.yezhihao.www.interceptor.PageInterceptor">
+                <property name="properties">
+                    <value>property-key=property-value</value>
+                </property>
+                </bean>
+        </array>
+    </property>
 		<property name="mapperLocations" value="classpath:com/yezhihao/www/mapper/*.xml"></property>
 	</bean>
 	
@@ -44,12 +59,12 @@
 	<!-- 自动注入 -->
     <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
        
-      <bean id="UserTest" class="com.yezhihao.www.dao.UserTest"></bean>
-
-
-	<context:component-scan base-package="com.yezhihao.www">
-		<!-- <context:exclude-filter type="annotation"
-			expression="org.springframework.stereotype.Controller" /> -->
-	</context:component-scan>
+ 
+	<!-- <plugins>
+	  	<plugin interceptor="com.yezhihao.www.interceptor.PageInterceptor">
+	  		<property name="test" value="abc"/>
+	  	</plugin>
+	  </plugins> -->
+	
 	
 </beans>

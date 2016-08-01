@@ -3,7 +3,6 @@ package com.yezhihao.www.interceptor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Map;
 import java.util.Properties;
 
 import org.apache.ibatis.executor.parameter.ParameterHandler;
@@ -28,6 +27,7 @@ import com.yezhihao.www.po.Page;
 @Intercepts({@Signature(type=StatementHandler.class,method="prepare",args={Connection.class})})
 public class PageInterceptor implements Interceptor {
 	
+	@SuppressWarnings("unused")
 	private String test;
 	
 	@Override
@@ -59,6 +59,7 @@ public class PageInterceptor implements Interceptor {
 			/*下面就是实施分页查询*/
 			// 改造后带分页查询的SQL语句
 			String pageSql = sql + " limit " + page.getDbIndex() + "," + page.getDbNumber();
+		
 			metaObject.setValue("delegate.boundSql.sql", pageSql);
 		}
 		return invocation.proceed();

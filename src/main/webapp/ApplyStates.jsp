@@ -3,6 +3,8 @@
 <%@page import="com.yezhihao.www.dao.GetBorrowBookDao" %>
 <%@page import="com.yezhihao.www.po.BorrowBookPo" %>
 <%@page import="java.util.ArrayList" %>  
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -58,6 +60,8 @@
 	            	   BorrowBookPo applybook = list.get(i);
 	           		   if(applybook.getAllow_borrow()==2||applybook.getAllow_borrow()==0){
            %>   
+           <c:if test="${list!=null}">
+          <c:forEach items="${list}" var="book">
           <div id="onebook">
              <dl>
                <dt>
@@ -85,6 +89,8 @@
                %>
              </dl>
           </div>
+          </c:forEach>
+          </c:if>
           <%
 	        }
             }

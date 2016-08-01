@@ -5,27 +5,27 @@ public class BookPo {
 	private String book_name;
 	private String book_writer;
 	private String book_amg;
-	private int book_samem;
-	private int book_margin;
-	private int id;
+	private Integer book_samem;
+	private Integer book_margin;
+	private Integer id;
 	
 	public BookPo() {
 		super();
 	}
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public int getBook_margin() {
+	public Integer getBook_margin() {
 		return book_margin;
 	}
 
-	public void setBook_margin(int book_margin) {
+	public void setBook_margin(Integer book_margin) {
 		this.book_margin = book_margin;
 	}
 
@@ -53,15 +53,15 @@ public class BookPo {
 		this.book_amg = book_amg;
 	}
 
-	public int getBook_samem() {
+	public Integer getBook_samem() {
 		return book_samem;
 	}
 
-	public void setBook_samem(int book_samem) {
+	public void setBook_samem(Integer book_samem) {
 		this.book_samem = book_samem;
 	}
 
-	public BookPo(int id,String book_name, String book_writer, String book_amg, int book_samem,int book_margin) {
+	public BookPo(Integer id,String book_name, String book_writer, String book_amg, Integer book_samem,Integer book_margin) {
 		super();
 		this.book_name = book_name;
 		this.book_writer = book_writer;

@@ -1,14 +1,22 @@
 package com.yezhihao.www.service;
 
-import com.yezhihao.www.dao.RegisterUserDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.yezhihao.www.dao.User;
 import com.yezhihao.www.po.UserPo;
 
+@Service("RegisterUserService")
 public class RegisterUserService {
 
-	public static boolean adduser(UserPo user) throws Exception {
-		RegisterUserDao registerUserDao=new RegisterUserDao();
-		Boolean a=registerUserDao.adduser(user);
-		return a;
+	@Autowired
+	private User user;
+
+	public  boolean adduser(UserPo user1) throws Exception {
+		//RegisterUserDao registerUserDao=new RegisterUserDao();
+		user.addUser(user1);
+		//Boolean a=registerUserDao.adduser(user);
+		return true;
 	}
 	
 }

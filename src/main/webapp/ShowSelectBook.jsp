@@ -5,6 +5,8 @@
 <%@page import="com.yezhihao.www.po.BookPo" %>
 <%@page import="com.yezhihao.www.po.UserPo" %>
 <%@page import="java.util.ArrayList" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -46,7 +48,7 @@
     <center>
 	<div id="center">
 	
-          <% 
+    <%--       <% 
           	SelectBookDao bookDao = new SelectBookDao(); 
                ArrayList<BookPo> list =bookDao.getBookByselect(request.getParameter("select"));
                if(list!=null&&list.size()>0)
@@ -54,34 +56,24 @@
 	               for(int i=0;i<list.size();i++)
 	               {
 	            	   BookPo book = list.get(i);
-           %>   
+           %>  --%>  
+           <c:if test="${list!=null}">
+          <c:forEach items="${list}" var="book">
           <div id="onebook">
              <dl>
                <dt>
-                 <a href="BookDetails.jsp?id=<%=book.getId()%>"><img src="<%=request.getContextPath()%>/amg_lib/<%=book.getBook_amg()%>" width="120" height="130" /></a>
+                <a href="BookDetails?id=${book.id} "><img src="<%=request.getContextPath()%>/amg_lib/${book.book_amg}" width="120" height="130" /></a>
                </dt>
-               <dd class="name">书名：<%=book.getBook_name() %></dd> 
-               <dd class="writer">作者:<%=book.getBook_writer()%></dd> 
-               <%
-               GetUserDao GetUserDao=new GetUserDao();
-               ArrayList<UserPo> list1=GetUserDao.getgeneralUser();
-               int ret=0;
-               for(UserPo User:list1){
-            	   if(((String)session.getAttribute("username")).equals(User.getUsre_name())){
-            		   ret=1;
-            		   break;
-            	   }
-               }
-               if(ret==0){
-               %>
-               <dd class="delete"><a href="servlet/DeleteDookServlet?book_id=<%= book.getId()%>&a=false">图书下架</a></dd> 
-               <% }%>
+               <dd class="name">书名：${book.book_name}</dd> 
+               <dd class="writer">作者:${book.book_writer}</dd> 
+               <c:if test="${ret==0}">
+               <dd class="delete"><a href="servlet/DeleteDookServlet?book_id=${book.id}&a=false">图书下架</a></dd> 
+               </c:if>
              </dl>
           </div>
-          <%
-            }
-           	} 
-          %>
+          </c:forEach>
+          </c:if>
+         
 	</div>
     </center>
 </body>

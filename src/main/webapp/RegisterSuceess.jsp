@@ -8,16 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-UserPo user=(UserPo)session.getAttribute("user");
-%>
 <h1>注册成功，信息如下：</h1>
 <table align="center" width="500" height="300">
-<tr><td><img src="<%=request.getContextPath()%>/amg_lib/<%=user.getUser_amg()%>" width="200" height="200"/></td></tr>
-<tr><td>用户名：<%=user.getUsre_name()%></td> </tr>
-<tr><td>密码：<%=(String)session.getAttribute("password")%></td></tr>
-<tr><td>用户类型：<%=user.getType()%></td></tr> 
-<tr><td><a href="Login.jsp">确定</a></td></tr> 
+<tr><td><img src="<%=request.getContextPath()%>/amg_lib/${user.user_amg}" width="200" height="200"/></td></tr>
+<tr><td>用户名：${user.usre_name}</td> </tr>
+<tr><td>密码：${user.password}</td></tr>
+<tr><td>用户类型：${user.type}</td></tr> 
+<tr><td><a href="http://localhost:8080/yezhihao.toptiew.booksystem/Login.jsp">确定</a></td></tr> 
 </table>
 </body>
 </html>

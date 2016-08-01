@@ -43,22 +43,16 @@
   </script>
 </head>
 <body>
-  <%  	  GetBookDao bookDao = new GetBookDao(); 
-          BookPo book = bookDao.getBookById(Integer.parseInt(request.getParameter("book_id")));
-             if(book!=null)
-             {
-          %>
 <form action="servlet/UpdateBookServlet" name="regForm" method="post" enctype="multipart/form-data"  onsubmit="return judge()" >
  <table align="center" width="500" height="300">
- <tr><td><img src="<%=request.getContextPath()%>/amg_lib/<%=book.getBook_amg()%>" width="200" height="200"/></td></tr>
-  <tr><td><input type="hidden"  name="ID" value="<%=book.getId()%>"></td></tr>
-  <tr><td  align="right">书名</td><td><input type="text" value="<%=book.getBook_name() %>" name="book_name" id="book_name"/></td></tr>
-  <tr><td  align="right">作者</td><td><input type="text" name="book_writer"  value="<%=book.getBook_writer()%>" id="book_writer" /></td></tr>
-  <tr><td  align="right">增加书本数量</td><td><input type="text" name="book_num" id="book_num" /></td></tr>
+ <tr><td><img src="${ pageContext.request.contextPath }/amg_lib/${book.book_amg}" width="200" height="200"/></td></tr>
+  <tr><td><input type="hidden"  name="ID" value="${book.id}"></td></tr>
+  <tr><td  align="right">书名</td><td><input type="text" value="${book.book_name}" name="book_name" id="book_name"/></td></tr>
+  <tr><td  align="right">作者</td><td><input type="text" name="book_writer"  value="${book.book_writer}" id="book_writer" /></td></tr>
+  <tr><td  align="right">增加书本数量</td><td><input type="text" name="book_samem" id="book_num" /></td></tr>
   <tr><td  align="right">上传图片</td><td><input type="file" name="book_amg" id="book_amg" /></td></tr>
   <tr><td  align="right" ><input name="regForm" type="submit" value="提交"></td></tr>
   </table>
 </form>
-<% }%>
 </body>
 </html>

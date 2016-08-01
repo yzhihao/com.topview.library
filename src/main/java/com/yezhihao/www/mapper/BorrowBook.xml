@@ -14,7 +14,7 @@
     <result column="borrow_date" jdbcType="VARCHAR" property="borrow_date"/>
     <result column="return_date" jdbcType="VARCHAR" property="return_date"/>
   </resultMap>
-	 <!--增加j申请借阅书籍  -->
+	 <!--增加申请借阅书籍  -->
      <insert id="addBorrowBook" parameterType="BorrowBookPo" useGeneratedKeys="true" keyProperty="borrow_bookid">
 	 	insert into book_borrow(book_id, allow_borrow,book_name,user_name,borrow_date,return_date) values(#{book_id},#{allow_borrow},#{book_name},#{user_name},#{borrow_date},#{return_date})
 	 </insert>

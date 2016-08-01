@@ -54,7 +54,6 @@ public class LonginServlet extends HttpServlet {
 	              if(c.getName().equals("Username"))
 	              {
 	                   username2 =  URLDecoder.decode(c.getValue(),"utf-8");
-
 	              }
 	           }
 	      }   

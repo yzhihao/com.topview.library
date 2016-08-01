@@ -3,6 +3,8 @@
 <%@page import="com.yezhihao.www.dao.GetBorrowBookDao" %>
 <%@page import="com.yezhihao.www.po.BorrowBookPo" %>
 <%@page import="java.util.ArrayList" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -45,29 +47,22 @@
     <hr>
     <center>
 	<div id="center">
-          <% 
-          GetBorrowBookDao bookDao = new GetBorrowBookDao(); 
-               ArrayList<BorrowBookPo> list =bookDao.getApplyBook();
-               if(list!=null&&list.size()>0)
-               {
-	               for(int i=0;i<list.size();i++)
-	               {
-	            	   BorrowBookPo applybook = list.get(i);
-           %>   
+        
+           <c:if  test="${list!=null}">
+			<c:forEach items="${list}" var="book">
           <div id="onebook">
              <dl>
                <dt>
-                 <a href="AllowBookDetails.jsp?id=<%=applybook.getBook_id()%>&user_name=<%=applybook.getUser_name()%>"><img src="<%=request.getContextPath()%>/amg_lib/<%=applybook.getBook_amg()%>" width="120" height="130" /></a>
+                 <a href="AllowBookDetails?id=${book.book_id}&user_name=${book.user_name}"><img src="${ pageContext.request.contextPath }/upload/${book.book_amg}" width="120" height="130" /></a>
                </dt>
-               <dd class="name">书名：<%=applybook.getBook_name() %></dd> 
-               <dd class="username">申请人：<%=applybook.getUser_name() %></dd>
-               <dd class="date">申请时间:<%=applybook.getBorrow_date()%></dd>
+               <dd class="name">书名：${book.book_name}</dd> 
+               <dd class="username">申请人：${book.user_name}</dd>
+               <dd class="date">申请时间:${book.borrow_date}</dd>
              </dl>
           </div>
-          <%
-            }
-           	} 
-          %>
+          </c:forEach>
+          </c:if>
+      
           <a href="Administrator.jsp">返回主界面</a><br>
 	</div>
     </center>

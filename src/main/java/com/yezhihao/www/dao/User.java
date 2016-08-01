@@ -2,11 +2,11 @@ package com.yezhihao.www.dao;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import com.yezhihao.www.po.UserPo;
 
-@Service
+@Repository
 public interface User {
 	/*增加用户*/
     public void addUser(UserPo userPo);
@@ -18,7 +18,7 @@ public interface User {
 	 public List<UserPo> getgeneralUser(String String);
 	 
 	 /*通过用户名来获取用户*/
-	 public List<UserPo> getuserbyusername(String String);
+	 public UserPo  getuserbyusername(String String);
 	 
 	/* 更新用户的信息*/ 
 	 public void updateuserdao(UserPo userPo);

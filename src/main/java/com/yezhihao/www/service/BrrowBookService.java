@@ -1,12 +1,19 @@
 package com.yezhihao.www.service;
 
-import com.yezhihao.www.dao.AlterBorrowBookDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.yezhihao.www.dao.BorrowBook;
 import com.yezhihao.www.po.BorrowBookPo;
 
+@Service
 public class BrrowBookService {
+	
+	@Autowired
+	private BorrowBook BorrowBook;
+	
 	public Boolean brrowBook(BorrowBookPo borrowBook) throws Exception{
-		AlterBorrowBookDao  borrowBookDao=new AlterBorrowBookDao();
-		Boolean a=borrowBookDao.borrowBook(borrowBook);
-		return a;
+		BorrowBook.addBorrowBook(borrowBook);
+		return true;
 	}
 }

@@ -7,8 +7,12 @@
     <filter-class>com.yezhihao.www.service.FilterService</filter-class>
     <init-param>
       <param-name>noLoginPaths</param-name>
-      <param-value>Login.jsp;Listener.jsp;LonginFailed.jsp;/servlet/LonginServlet;RegisterUser.jsp;RegisterFali.jsp;RegisterSuceess.jsp;/RegisterUserServlet;/servlet/ChangePosswordServlet;InputPossworld.jsp;AnswerPossword_Q.jsp;ChangePassword.jsp;ChangePossword_S.jsp;/servlet/ImageServlet;</param-value>
-    </init-param>
+      <param-value>Listener;Login.jsp;Listener.jsp;LonginFailed.jsp;/servlet/LonginServlet;RegisterUser.jsp;RegisterFali.jsp;RegisterSuceess.jsp;/RegisterUserServlet;/servlet/ChangePosswordServlet;InputPossworld.jsp;AnswerPossword_Q.jsp;ChangePassword.jsp;ChangePossword_S.jsp;/servlet/ImageServlet;</param-value>
+    	 </init-param>
+    	<init-param>
+    	<param-name>encoding</param-name>
+     	 <param-value>UTF-8</param-value>
+    	</init-param>
   </filter>
   <filter-mapping>
     <filter-name>filter</filter-name>
@@ -35,6 +39,12 @@
  	<listener>
  		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
  	</listener>
+ 	<listener>
+ 		<listener-class>com.yezhihao.www.service.MyListener</listener-class>
+ 	</listener>
+ 	<listener>
+ 		<listener-class>com.yezhihao.www.service.MyReqestListener</listener-class>
+ 	</listener>
    		<!-- DispatcherServlet对应的上下文配置， 默认为/WEB-INF/$servlet-name$-servlet.xml
 		 -->
 		 <!-- mvc-dispatcher拦截所有的请求-->
@@ -46,6 +56,7 @@
 		<init-param>
           <param-name>contextConfigLocation</param-name>
           <param-value>classpath:springmvc.xml</param-value>
+          
         </init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -64,8 +75,9 @@
   <servlet-mapping>
     <servlet-name>LonginServlet</servlet-name>
     <url-pattern>/servlet/LonginServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
+  </servlet-mapping> -->
+  
+  <!-- <servlet>
     <description></description>
     <display-name>AddBookServlet</display-name>
     <servlet-name>AddBookServlet</servlet-name>
@@ -170,11 +182,11 @@
     <display-name>AllowApplyServlet</display-name>
     <servlet-name>AllowApplyServlet</servlet-name>
     <servlet-class>com.yezhihao.www.view.AllowApplyServlet</servlet-class>
-  </servlet> -->
+  </servlet>
   <servlet-mapping>
     <servlet-name>AllowApplyServlet</servlet-name>
     <url-pattern>/servlet/AllowApplyServlet</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> -->
   <context-param>
     <description>Location to store uploaded file</description>
     <param-name>file-upload</param-name>

@@ -50,10 +50,10 @@
 <form action="servlet/RegisterUserServlet" name="regForm" method="post"  enctype="multipart/form-data" onsubmit="return judge()">
   <table  align="center" width="500" height="400">
   <tr><td colspan="2" align="center"><img src ="http://img.pintu360.com/other/20150331/208d39dd-0f4d-4ee6-9a83-2e8e2c09786a.jpg"height="300"></td></tr>
-  <tr><td  align="right">用户名</td><td><input type="text" name="username" id="username"/></td></tr>
+  <tr><td  align="right">用户名</td><td><input type="text" name="usre_name" id="username"/></td></tr>
   <tr><td  align="right">密码</td><td><input type="text" name="password" id="password"/></td></tr>
-    <tr><td  align="right">密保问题：</td><td><input type="text" name="request" id="request"/></td>  
-  <tr><td  align="right">请输入答案：</td><td><input type="text" name="answer"  id="answer"/></td></tr>  
+    <tr><td  align="right">密保问题：</td><td><input type="text" name="possword_request" id="request"/></td>  
+  <tr><td  align="right">请输入答案：</td><td><input type="text" name="possword_right"  id="answer"/></td></tr>  
   <tr><td  align="right">上传图片</td><td><input type="file" name="user_amg" id="user_amg"/></td></tr>
   <tr><td  align="right"><input type="radio" value="普通用户" name="type" checked="checked" />普通用户</td>
   <td><input type="radio" value="管理员" name="type" />管理员</td></tr>

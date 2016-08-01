@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
- <form action="AnswerPossword_Q.jsp" name="regForm" method="get" onsubmit="return judge()">
+ <form action="AnswerPossword_Q" name="regForm" method="get" onsubmit="return judge()">
   <table  align="center" width="500" height="450">
   <tr><td colspan="2" align="center"><img src ="http://src.house.sina.com.cn/imp/imp/deal/91/1e/d/edeb32ced44028a2c8c5715f910_p1_mk1.jpg"height="300"></td></tr>
   <tr><td  align="right">请输入用户名：</td><td><input type="text" name="username" id="username"/></td>  

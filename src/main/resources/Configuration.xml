@@ -10,17 +10,14 @@
 	    <setting name="useColumnLabel" value="true"/>
 	  </settings>
 	  -->
-	  <properties resource="com/yezhihao/www/config/db.properties"/>
+	  <properties resource="db.properties"/>
+	  
 	  <typeAliases>
 		<!-- <typeAlias type="com.atguigu.day03_mybaits.test1.User" alias="_User"/> -->
 		<package name="com.yezhihao.www.po"/>
 		</typeAliases>
 		
-	  <plugins>
-	  	<plugin interceptor="com.yezhihao.www.interceptor.PageInterceptor">
-	  		<property name="test" value="abc"/>
-	  	</plugin>
-	  </plugins>
+	  
 
   <environments default="development">
     <environment id="development">
@@ -35,12 +32,20 @@
       </dataSource>
     </environment>
   </environments>
-
+  
+    <!--   <plugins>
+	  	<plugin interceptor="com.yezhihao.www.interceptor.PageInterceptor">
+	  		<property name="test" value="abc"/>
+	  	</plugin>
+	  </plugins> -->
+  
  	
 	  <mappers>
-  	    <mapper resource="com/yezhihao/www/config/sqlconfig/User.xml"/>
-	    <mapper resource="com/yezhihao/www/config/sqlconfig/CollectBook.xml"/>
-	    <mapper resource="com/yezhihao/www/config/sqlconfig/Book.xml"/>
-	    <mapper resource="com/yezhihao/www/config/sqlconfig/BorrowBook.xml"/>
+	  	<mapper resource="com/yezhihao/www/mapper/Book.xml"/>
+	  
+  	   <!--  <mapper resource="com/yezhihao/www/mapper/User.xml"/>
+	    <mapper resource="com/yezhihao/www/mapper/CollectBook.xml"/>
+	    
+	    <mapper resource="com/yezhihao/www/mapper/BorrowBook.xml"/> -->
 	  </mappers>
 </configuration>

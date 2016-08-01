@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               }
            }
       }
-      	GetUserDao userDao=new GetUserDao();
+     /*  	GetUserDao userDao=new GetUserDao();
 		ArrayList<UserPo> Userlist=new ArrayList<UserPo>();
 		Userlist=userDao.getUser();
 		for(UserPo user1:Userlist){
@@ -69,13 +69,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				}
 				break;
 			}
-		}
+		} */
     %>
  <form action="servlet/LonginServlet" name="regForm" method="post" onsubmit="return judge()">
   <table  align="center" width="500" height="450">
-  <!--<tr><td  >当前在线人数：${usernum} </td><td>总访问量：${allusernum}</td><td><a href="Listener.jsp">查看登录数据</a></td><tr>-->
+  <tr><td  >当前在线人数：${usernum}</td><td>总访问量：${allusernum}</td><td><a href="Listener">查看登录数据</a></td><tr>
   <tr><td colspan="4" align="center"><img src ="http://src.house.sina.com.cn/imp/imp/deal/91/1e/d/edeb32ced44028a2c8c5715f910_p1_mk1.jpg"height="300"></td></tr>
-  <tr><td  align="right">用户名</td><td><input type="text" name="username" value="<%=username%>" id="username"/></td>  
+  <tr><td  align="right">用户名</td><td><input type="text" name="usre_name" value="<%=username%>" id="username"/></td>  
   <tr><td  align="right">密码</td><td><input type="password" name="password"  value="<%=password %>" id="password"/></td></tr>
   <tr><td  align="right"><input type="radio" value="普通用户" name="type" checked="checked"/>普通用户</td>
   <td><input type="radio" value="管理员" name="type" />管理员</td></tr>

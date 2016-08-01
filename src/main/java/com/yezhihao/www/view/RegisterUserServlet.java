@@ -141,7 +141,7 @@ public class RegisterUserServlet extends HttpServlet {
 					session.setAttribute("password", map.get("password"));
 			   		user.setPossword_request(map.get("request"));
 			   		user.setPossword_right(possword_right);
-				a=RegisterUserService.adduser(user);
+				a=(new RegisterUserService()).adduser(user);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -158,6 +158,7 @@ public class RegisterUserServlet extends HttpServlet {
 				}
 		   }
 		}	
+	
 	public final static String getMD5(String s) {
 		char hexDigits[] = { '0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'};
 		try {
